@@ -1,6 +1,6 @@
 # X-KeyPad-Sparky-744
 
-## This is a development version of X-KeyPad configuration and corresponding FlyWithLua scripts for the Sparky-744 mod in X-plane
+## This is a development version of X-KeyPad configuration for Virtual Device and corresponding FlyWithLua scripts for the Sparky-744 mod in X-plane
 
 Sparky-744 mod information: https://forums.x-plane.org/index.php?/files/file/67817-sparky-744-default-744-major-overhaul/
 

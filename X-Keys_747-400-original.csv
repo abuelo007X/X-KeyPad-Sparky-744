@@ -1,0 +1,117 @@
+Name,Comments,X-Key Unit Number,Shift Flag,Key,Logic Dataref,Float Scale Factor,Bank 1 On,Bank 1 Blink,Bank 2 On,Bank 2 Blink,Command Logic Test,False (Default) Command,True Command,False (Default) Speech,True Speech,Numeric Dataref,Multiply By,Min,Max,Increment,Numeric Speech
+AP,######,,,0,sim/cockpit/autopilot/autopilot_mode,,!2,,2,,> 0.1,laminar/B747/autopilot/button_switch/cmd_L;laminar/B747/autopilot/button_switch/cmd_C;laminar/B747/autopilot/button_switch/cmd_R;laminar/B747/toggle_switch/flight_dir_L;laminar/B747/toggle_switch/flight_dir_R,sim/autopilot/servos_fdir_off,Auto Pilot On,Auto Pilot Off,,,,,,
+Ident,######,,,1,sim/cockpit2/radios/indicators/transponder_id,,!1,,,1,,sim/transponder/transponder_ident,,Transponder Ident,,sim/cockpit/radios/transponder_code,,0,7777,,Transponder set to [N]
+COM1,######,,,2,laminar/B747/comm/rtp_L/off_status,100,100,,< 100,,,sim/audio_panel/monitor_audio_com1;laminar/B747/rtp_L/off_switch,,Com 1 ON[<100];Com 1 OFF[= 100],Com 1 ON[<100];Com 1 OFF[= 100],sim/cockpit/radios/com1_freq_hz,100,,,,COM 1 Set to [n] Mega Hertz
+COM2,######,,,3,laminar/B747/comm/rtp_R/off_status,100,100,,< 100,,,sim/audio_panel/monitor_audio_com2;laminar/B747/rtp_R/off_switch,,Com 2 ON[<100];Com 2 OFF[= 100],,sim/cockpit/radios/com2_freq_hz,100,,,,COM 2 Set to [n] Mega Hertz
+NAV1,######,,,4,sim/cockpit2/radios/actuators/audio_selection_nav1,,!1,,1,,,sim/audio_panel/monitor_audio_nav1,,,,sim/cockpit/radios/nav1_freq_hz,100,,,,NAV 1 Set to [n] Mega Hertz
+NAV2,######,,,5,sim/cockpit2/radios/actuators/audio_selection_nav2,,!1,,1,,,sim/audio_panel/monitor_audio_nav2,,,,sim/cockpit/radios/nav2_freq_hz,100,,,,NAV 2 Set to [n] Mega Hertz
+ADF1,######,,,6,laminar/B747/ap_L/vor_adf/audio_status,,!1,,1,,,laminar/B747/ap_L/vor_adf/audio_sel_switch,,ADF1 ON[=1];ADF1 OFF[< 1.0],,sim/cockpit/radios/adf1_freq_hz,,,,,ADF 1 Set to [n] Kilo Hertz
+ADF2,######,,1,6,laminar/B747/ap_R/vor_adf/audio_status,,!1,,1,,,laminar/B747/ap_R/vor_adf/audio_sel_switch,,ADF2 ON[=1];ADF2 OFF[< 1.0],,sim/cockpit/radios/adf2_freq_hz,,,,,ADF 2 Set to [n] Kilo Hertz
+Gear,######,,,7,sim/flightmodel2/gear/deploy_ratio[0],100,100,,<1,<99,>99,sim/flight_controls/landing_gear_toggle,sim/flight_controls/landing_gear_toggle,Deploy Landing Gear,Retract Landing Gear,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+FD,######,,,8,laminar/B747/autopilot/AFDS/status_annun,,< 1.0,,>0.1,,> 0.1,laminar/B747/toggle_switch/flight_dir_L;laminar/B747/toggle_switch/flight_dir_R,laminar/B747/toggle_switch/flight_dir_L;laminar/B747/toggle_switch/flight_dir_R,Flight Director On,Flight Director Off,,,,,,
+XPDR Mode,######,,,9,laminar/B747/flt_mgmt/txpdr/mode_sel_pos,,0,1,2, ,,,,,,SRS/X-KeyPad/SharedInt[5],,0,2,up-down,Transponder Standby[=0];Transponder On [=1];Transponder On Mode A[=2]
+COM1 XFR,######,,,10,,,1,,,,,sim/radios/com1_standy_flip,,,,sim/cockpit/radios/com1_stdby_freq_hz,100,,,,COM 1 Stand By Set to [n] Mega Hertz
+COM2 XFR,######,,,11,,,1,,,,,sim/radios/com2_standy_flip,,,,sim/cockpit/radios/com2_stdby_freq_hz,100,,,,COM 2 Stand By Set to [n] Mega Hertz
+NAV1 XFR,######,,,12,,,1,,,,,sim/radios/nav1_standy_flip,,,,sim/cockpit/radios/nav1_stdby_freq_hz,100,,,,NAV 1 Stand By Set to [n] Mega Hertz
+NAV2 XFR,######,,,13,,,1,,,,,sim/radios/nav2_standy_flip,,,,sim/cockpit/radios/nav2_stdby_freq_hz,100,,,,NAV 2 Stand By Set to [n] Mega Hertz
+ATC,######,,,14,,,1,,,,,sim/operation/contact_atc,,,,,,,,,
+Gear,######,,,15,sim/flightmodel2/gear/deploy_ratio[1],100,100,,<1,<99,>99,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+HDG,######,,,16,sim/cockpit/autopilot/autopilot_state,,!2,,2,,2,sim/autopilot/heading,sim/autopilot/heading,Heading Mode On,Heading Mode Off,sim/cockpit2/autopilot/heading_dial_deg_mag_pilot,,0,360,,Heading set to [N] degrees
+HDG SYNC,######,,,17,,,1,,,,,sim/autopilot/heading_sync,,,,,,,,,
+DG Sync,!!!!!!,,1,17,,, ,,,,, ,,,,,,,,,
+PANEL LIGHT,######,,,18,laminar/B747/light/flood/rheostat/captain_panel,,<1,,1,, , , , , ,laminar/B747/light/flood/rheostat/captain_panel;laminar/B747/light/flood/rheostat/first_officer_panel,,0,1,wrap,Panel Lighting ON[=1];Panel Lighting OFF[=0]
+CABIN,######,,1,18,laminar/B747/light/flood/rheostat/overhead,,<1,,1,,,,,,,laminar/B747/light/flood/rheostat/overhead;laminar/B747/light/flood/rheostat/aisle_stand,,0,1,wrap,Cabin Lights On[=1];Cabin Lights Off[=0]
+START,######,,,19,sim/cockpit2/engine/indicators/engine_speed_rpm[0],,<10,,>10,,<10,, , ,Right Engine Start,SRS/X-KeyPad/SharedInt[2],,-1,8,,
+COWL FLAPS,!!!!!!!!,,,20, ,, ,, , ,,,,,, ,, , , , 
+DOOR,######,,,21,sim/cockpit2/switches/door_open[1],,!1,,,1,1,,,Door Open,Door Close,sim/cockpit2/switches/door_open[1],,0,1,wrap,
+DOOR,######,,1,21,sim/cockpit2/switches/door_open[0],,!1,,,1,1,,,Door Open,Door Close,sim/cockpit2/switches/door_open[0];sim/cockpit2/switches/door_open[1],,0,1,wrap,
+Brakes,######,,,22,sim/cockpit2/controls/parking_brake_ratio,,!1,,1,,1,sim/flight_controls/brakes_toggle_max,sim/flight_controls/brakes_toggle_max,Brakes On,Brakes Off,,,,,,
+Flaps Down,######,,,23,sim/cockpit2/controls/flap_ratio,1000,<1,,>999,>1,,sim/flight_controls/flaps_down,,Flaps Fully Retracted[=0];Flaps 1%[=166];Flaps 5%[=333];Flaps 10%[=500];Flaps 20%[=666];Flaps 25%[=833];Flaps 30%[=1000];,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+ALT,######,,,24,sim/cockpit/autopilot/autopilot_state,,!16416,,16384,32,,sim/autopilot/altitude_hold,,Altitude Mode off[!&16416];Altitude Mode On[&16384];Altitude Mode Arm[&32],,sim/cockpit/autopilot/altitude,,,,,Altitude set to [n] feet
+Seat Belt Light,######,,,25,laminar/B747/safety/seat_belts/sel_dial_pos,10,<1,,>10,10,, , ,,,SRS/X-KeyPad/SharedInt[3],,0,2,wrap,Seatbelt Sign ON[=2];Seatbelt Sign Auto[=1];Seatbelt sign OFF[=0]
+No Smoking Light,######,,1,25,laminar/B747/safety/no_smoking/sel_dial_pos,10,<1,,>10,10,,,,,,SRS/X-KeyPad/SharedInt[6],,0,2,wrap,No-smoking Sign ON[=2];No-smoking Sign Auto[=1];No-smoking sign OFF[=0]
+LANDING LIGHTS,######,,,26,sim/cockpit/electrical/landing_lights_on,,!1,,1,,1,laminar/B747/toggle_switch/landing_light_IBL;laminar/B747/toggle_switch/landing_light_IBR;laminar/B747/toggle_switch/landing_light_OBL;laminar/B747/toggle_switch/landing_light_OBR,laminar/B747/toggle_switch/landing_light_IBL;laminar/B747/toggle_switch/landing_light_IBR;laminar/B747/toggle_switch/landing_light_OBL;laminar/B747/toggle_switch/landing_light_OBR,Landing Lights On,Landing Lights Off,,,,,,
+FUEL PUMP,!!!!!!,,,27,sim/cockpit/engine/fuel_pump_on[0],,!1,,1,,>0, , , , ,,,,,,
+DE-ICE,######,,,28,sim/cockpit2/ice/ice_window_heat_on,,!1,,1,,1,laminar/B747/button_switch/anti_ice_wing;laminar/B747/button_switch/anti_ice_window_R;laminar/B747/button_switch/anti_ice_window_L;laminar/B747/button_switch/anti_ice_nacelle_4;laminar/B747/button_switch/anti_ice_nacelle_3;laminar/B747/button_switch/anti_ice_nacelle_2;laminar/B747/button_switch/anti_ice_nacelle_1,laminar/B747/button_switch/anti_ice_wing;laminar/B747/button_switch/anti_ice_window_R;laminar/B747/button_switch/anti_ice_window_L;laminar/B747/button_switch/anti_ice_nacelle_4;laminar/B747/button_switch/anti_ice_nacelle_3;laminar/B747/button_switch/anti_ice_nacelle_2;laminar/B747/button_switch/anti_ice_nacelle_1,Deice On,Deice Off,,,,,,
+Baro,######,,,29,,,1,,,,,laminar/B747/efis/baro_std/capt/switch,,Barometer reset to sea level or 29.92 inches of mercury,,sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot,,,,,Altimeter set to [N] inches of mercury
+PUSH PLAN,######,,,30,,,,,,,,BetterPushback/start_planner,,Pushback plan,,,,             ,,,
+PUSH START,######,,1,30,,,,,,,,BetterPushback/stop_planner;BetterPushback/start,,Start pushback,,,,,,,
+Flaps Up,######,,,31,sim/cockpit2/controls/flap_ratio,1000,<1,,>999,>1, ,sim/flight_controls/flaps_up,,Flaps Fully Retracted[=0];Flaps 1%[=166];Flaps 5%[=333];Flaps 10%[=500];Flaps 20%[=666];Flaps 25%[=833];Flaps 30%[=1000];,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+NAV,######,,,32,sim/cockpit/autopilot/autopilot_state,,!768,,512,256,,sim/autopilot/NAV,,Nav Off[!768];Nav On[&512];Nav Arm[&256],,sim/cockpit/switches/HSI_selector,,0,2,wrap,H S I Set to V O R  1[=0];H S I Set to V O R 2[=1];H S I Set To GPS[=2]
+CDI,######,,,33,laminar/B747/nd/mode/capt/sel_dial_pos,,<1,,3,,<1,,,,,SRS/X-KeyPad/SharedInt[7],,0,3,up-down,
+TAXI LIGHTS,######,,,34,sim/cockpit2/switches/taxi_light_on,,!1,,1,,1,laminar/B747/toggle_switch/taxi_light,laminar/B747/toggle_switch/taxi_light,Taxi Lights On,Taxi Lights Off,,,,,,
+APU,######,,,35,sim/cockpit2/electrical/APU_N1_percent,,<100,,>99,,100, , , ,,SRS/X-KeyPad/SharedInt[1],,1,6,,APU Powering UP[=1]APU Bus and generators activated[=2]
+PITO HEAT,######,,,36,sim/cockpit2/ice/ice_pitot_heat_on_pilot,,!1,,1,,1,sim/ice/pitot_heat0_tog;sim/ice/pitot_heat1_tog  ,sim/ice/pitot_heat0_tog;sim/ice/pitot_heat1_tog  ,Pitot Heat On,Pitot Heat Off,,,,,,
+LOAD PLAN,,,,37,,,1,,,,,sim/FMS/key_load,,,,,,,,,
+TIME UP,######,,,38,,,1,,,,,*sim/operation/time_up_lots,,Time Later,,,,,,,
+TIME DOWN,######,,1,38,,,1,,,,,*sim/operation/time_down_lots,,Time Earlier,,,,,,,
+Pause,######,,,39,sim/time/paused,,!1,,,1,,sim/operation/pause_toggle,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+VOR,!!!!!!,,,40,,,,,,,,,,,,,,,,,
+LNAV,######,,,41,laminar/B747/autopilot/FMA/roll/mode_box_status,,<1.0,,>0.1,,<1.0,sim/autopilot/gpss,sim/autopilot/gpss,LNAV OFF,LNAV ON,,,,,,
+BEACON LIGHT,######,,,42,sim/cockpit/electrical/beacon_lights_on,,!1,,1,,1,laminar/B747/toggle_switch/beacon_light_down,laminar/B747/toggle_switch/beacon_light_up,Beacon Lights On,Beacon Lights Off,,,,,,
+AVIONIC POWER,######,,,43,sim/cockpit2/switches/avionics_power_on,,!1,,1,,1, , , , ,sim/cockpit2/switches/avionics_power_on,,0,1,wrap,Avionics on[=1];Avionics off[=0]
+7,######,,,44,,,,,1,,,SRS/X-KeyPad/Keypad_7,,,,,,,,,
+7,######,,1,44,,,,,1,,,SRS/X-KeyPad/Keypad_7,,,,,,,,,
+4,######,,,45,,,,,1,,,SRS/X-KeyPad/Keypad_4,,,,,,,,,
+4,######,,1,45,,,,,1,,,SRS/X-KeyPad/Keypad_4,,,,,,,,,
+1,######,,,46,,,,,1,,,SRS/X-KeyPad/Keypad_1,,,,,,,,,
+1,######,,1,46,,,,,1,,,SRS/X-KeyPad/Keypad_1,,,,,,,,,
+Minus,######,,,47,,,,,1,,,SRS/X-KeyPad/Keypad_Minus,,,,,,,,,
+Minus,######,,1,47,,,,,1,,,SRS/X-KeyPad/Keypad_Minus,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+APR,######,,,48,laminar/B747/autopilot/FMA/armed_pitch_mode,,< 1,,>1, ,<1,sim/autopilot/approach,sim/autopilot/approach,Approach Mode Off,Approach Mode On, , , , , ,
+BC,######,,1,48,sim/cockpit/autopilot/backcourse_on,,!1,,1,,1,sim/autopilot/back_course,sim/autopilot/back_course,Back Course On,Back Course Off,,,,,,
+CRS DOWN,!!!!!!,,,49,,, ,,,,, ,,,, ,, , , ,
+HDG DOWN,######,,1,49,,,,,1,,,*sim/autopilot/heading_down,,,,,,,,,
+STROBE LIGHT,######,,,50,sim/cockpit2/switches/strobe_lights_on,,!1,,1,,1,laminar/B747/toggle_switch/strobe_light,laminar/B747/toggle_switch/strobe_light,Strobe Lights On,Strobe Lights Off,,,,,,
+CLR,######,,,51,,,,,1,,,SRS/X-KeyPad/Keypad_Clear,,,,,,,,,
+CLR,######,,1,51,,,,,1,,,SRS/X-KeyPad/Keypad_Clear,,,,,,,,,
+8,######,,,52,,,,,1,,,SRS/X-KeyPad/Keypad_8,,,,,,,,,
+8,######,,1,52,,,,,1,,,SRS/X-KeyPad/Keypad_8,,,,,,,,,
+5,######,,,53,,,,,1,,,SRS/X-KeyPad/Keypad_5,,,,,,,,,
+5,######,,1,53,,,,,1,,,SRS/X-KeyPad/Keypad_5,,,,,,,,,
+2,######,,,54,,,,,1,,,SRS/X-KeyPad/Keypad_2,,,,,,,,,
+2,######,,1,54,,,,,1,,,SRS/X-KeyPad/Keypad_2,,,,,,,,,
+0,######,,,55,,,,,1,,,SRS/X-KeyPad/Keypad_0,,,,,,,,,
+0,######,,1,55,,,,,1,,,SRS/X-KeyPad/Keypad_0,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+VS,######,,,56,sim/cockpit/autopilot/autopilot_state,,!16,,16,,16,sim/autopilot/vertical_speed_pre_sel,sim/autopilot/vertical_speed_pre_sel,Vertical Speed On,Vertical Speed Off,sim/cockpit/autopilot/vertical_velocity,,,,,Vertical Speed to [n] feet per minute
+VNAV,######,,1,56,sim/cockpit2/autopilot/fms_vnav,,<1,,1, ,0,,, , ,sim/cockpit2/autopilot/fms_vnav,,0,1,wrap,VNAV ON[=1];VNAV OFF[=0]
+CRS UP,!!!!!!,,,57,,, ,,,,, ,,,, ,, , ,, 
+HDG UP,######,,1,57,,,,,1,,,*sim/autopilot/heading_up,,,,,,,,,
+NAV LIGHTS,######,,,58,sim/cockpit2/switches/navigation_lights_on,,!1,,1,,1,laminar/B747/toggle_switch/nav_light,laminar/B747/toggle_switch/nav_light,Navigation Lights On,Navigation Lights Off,,,,,,
+Menu,######,,,59,,,1,,,,,sim/FMS/CDU_popup,,,,,,,,,
+Menu,######,,1,59,,,1,,,,,sim/FMS2/CDU_popup,,,,,,,,,
+9,######,,,60,,,,,1,,,SRS/X-KeyPad/Keypad_9,,,,,,,,,
+9,######,,1,60,,,,,1,,,SRS/X-KeyPad/Keypad_9,,,,,,,,,
+6,######,,,61,,,,,1,,,SRS/X-KeyPad/Keypad_6,,,,,,,,,
+6,######,,1,61,,,,,1,,,SRS/X-KeyPad/Keypad_6,,,,,,,,,
+3,######,,,62,,,,,1,,,SRS/X-KeyPad/Keypad_3,,,,,,,,,
+3,######,,1,62,,,,,1,,,SRS/X-KeyPad/Keypad_3,,,,,,,,,
+.,######,,,63,,,,,1,,,SRS/X-KeyPad/Keypad_Decimal,,,,,,,,,
+.,######,,1,63,,,,,1,,,SRS/X-KeyPad/Keypad_Decimal,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+FLCH,######,,,64,sim/cockpit/autopilot/autopilot_state,,!64,,64,,,sim/autopilot/level_change,,Flight Level Change On[&64];Flight Level Change Off[!&64],,sim/cockpit2/autopilot/airspeed_dial_kts,,,,,Air speed set [n] knots
+ATHR,######,,,65,laminar/B747/toggle_switch/position[29],,!1,,1,,0,laminar/B747/toggle_switch/autothrottle,,Auto Throttle On[<1];Auto Throttle Off[>0.0],,sim/cockpit2/autopilot/airspeed_dial_kts,,,,,Air speed set [n] knots
+BAT,######,,,66,sim/cockpit/electrical/battery_on,,!1,,1,,1,sim/electrical/batteries_toggle,sim/electrical/batteries_toggle,Battery On,Battery Off,,,,,,
+Direct To,!!!!!,,,67,,, ,,,,,,,,,,,,,,
+Proc,!!!!!,,,68,,, ,,,,,,,,,,,,,,
+Clr,!!!!!,,,69,,, ,,,,,,,,,,,,,,
+FMS IN UP,!!!!!,,,70,,, ,,,,,,,,,,,,,,
+FMS OUT UP,!!!!!,,,71,,, ,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+SHIFT,######,,,72,,,1,,,,,SRS/X-KeyPad/Toggle_Shift,,,,,,,,,
+SHIFT,######,,1,72,,,1,,,,,SRS/X-KeyPad/Toggle_Shift,,,,,,,,,
+N1,REV THRUST,,,73,sim/flightmodel2/engines/thrust_reverser_deploy_ratio[0],,< 1.0,,>0.1,,< 0.1,*sim/engines/thrust_reverse_hold,,,,,,,,,
+TOGA,######,,1,73,,,1,,,,,sim/engines/TOGA_power,,Toga Power,,,,,,,
+GEN,XXXXXX,,,74,sim/cockpit2/electrical/generator_on[0],,!1,,1,,1, , , , ,,,,,,
+FPL,!!!!!,,,75,,, ,,,,, ,,,,,,,,,
+FMS CRSR,SPEED BRAKES,,,76,laminar/B747/flt_ctrls/speedbrake_lever, ,<1,,1,,<1,sim/flight_controls/speed_brakes_toggle,sim/flight_controls/speed_brakes_toggle,Speed Brakes OFF,Speed Brakes deployed,,,,,,
+ENT,!!!!!,,,77,,, ,,,,, ,,,,,,,,,
+FMS In Down,!!!!!,,,78,,, ,,,,, ,,,,,,,,,
+FMS Out Down,AUTO BRAKE,,,79,SRS/X-KeyPad/SharedInt[4],,<1,,1,2,0, ,,,,SRS/X-KeyPad/SharedInt[4],,0,2,wrap,Autobrake off[=2];Autobrake on[=1];Autobrake disabled[=0]
