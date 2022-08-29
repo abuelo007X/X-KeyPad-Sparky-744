@@ -40,7 +40,7 @@ if(PLANE_ICAO == "B744" and PLANE_TAILNUMBER == "") then
     local power="0" -- To be used for voltage value. 0 POWER OFF | 1 POWER ON
     local gen_st="0" -- To be used for generatos status. 0 ON | 1 OFF
     local switch_pos="0" -- To be used to capture switch position. values will vary depending on the switch
-    local pump_dem_p="0" -- To be used for demand pump postition. 0 OFF | 1 AUTO | 2 ON | Other AUX
+    local pump_dem_p="0" -- To be used for demand pump pressure. >0 PRESS light turned on | 0 PRESS Light turned off
     local SRS_CL_SAVE = -1
 
     -- Set SharedInt Engine Fuel pressure current value
@@ -49,47 +49,44 @@ if(PLANE_ICAO == "B744" and PLANE_TAILNUMBER == "") then
     SHAREDINT[2] = ENG_FUEL_PRESS[2]
     SHAREDINT[3] = ENG_FUEL_PRESS[3]
 
-    -- Mapping vs the SharedInt position (just for reference and documentation). The function ResetTempValues() will be responsible for the Initialization
-    -- local efv1 = SHAREDINT[0]   -- Engine fuel valve 1
-    -- local efv2 = SHAREDINT[1]   -- Engine fuel valve 2
-    -- local efv3 = SHAREDINT[2]   -- Engine fuel valve 3
-    -- local efv4 = SHAREDINT[3]   -- Engine fuel valve 4
-    -- local bt1 = SHAREDINT[4]    -- Bus Tie 1
-    -- local bt2 = SHAREDINT[5]    -- Bus Tie 2
-    -- local bt3 = SHAREDINT[6]    -- Bus Tie 3
-    -- local bt4 = SHAREDINT[7]    -- Bus Tie 4
-    -- local gc1 = SHAREDINT[8]    -- Gen Cont 1
-    -- local gc2 = SHAREDINT[9]    -- Gen Cont 2
-    -- local gc3 = SHAREDINT[10]   -- Gen Cont 3
-    -- local gc4 = SHAREDINT[11]   -- Gen Cont 4
-    -- local pdp1 = SHAREDINT[12]  -- Demand Pump 1
-    -- local pdp2 = SHAREDINT[13]  -- Demand Pump 2
-    -- local pdp3 = SHAREDINT[14]  -- Demand Pump 3
-    -- local pdp4 = SHAREDINT[15]  -- Demand Pump 4
+    -- Mapping vs the SharedInt position (for reference and documentation). The function ResetTempValues() will be responsible for the Initialization
+    local efv1 = SHAREDINT[0]   -- Engine fuel valve 1
+    local efv2 = SHAREDINT[1]   -- Engine fuel valve 2
+    local efv3 = SHAREDINT[2]   -- Engine fuel valve 3
+    local efv4 = SHAREDINT[3]   -- Engine fuel valve 4
+    local bt1 = SHAREDINT[4]    -- Bus Tie 1
+    local bt2 = SHAREDINT[5]    -- Bus Tie 2
+    local bt3 = SHAREDINT[6]    -- Bus Tie 3
+    local bt4 = SHAREDINT[7]    -- Bus Tie 4
+    local gc1 = SHAREDINT[8]    -- Gen Cont 1
+    local gc2 = SHAREDINT[9]    -- Gen Cont 2
+    local gc3 = SHAREDINT[10]   -- Gen Cont 3
+    local gc4 = SHAREDINT[11]   -- Gen Cont 4
+    local pdp1 = SHAREDINT[12]  -- Demand Pump 1
+    local pdp2 = SHAREDINT[13]  -- Demand Pump 2
+    local pdp3 = SHAREDINT[14]  -- Demand Pump 3
+    local pdp4 = SHAREDINT[15]  -- Demand Pump 4
 
     function ResetTempValues()
-        local efv1 = -1
-        local efv2 = -1
-        local efv3 = -1
-        local efv4 = -1
-        local bt1 = -1
-        local bt2 = -1
-        local bt3 = -1
-        local bt4 = -1
-        local gc1 = -1
-        local gc2 = -1
-        local gc3 = -1
-        local gc4 = -1
-        local pdp1 = -1
-        local pdp2 = -1
-        local pdp3 = -1
-        local pdp4 = -1
+        efv1 = -1
+        efv2 = -1
+        efv3 = -1
+        efv4 = -1
+        bt1 = -1
+        bt2 = -1
+        bt3 = -1
+        bt4 = -1
+        gc1 = -1
+        gc2 = -1
+        gc3 = -1
+        gc4 = -1
+        pdp1 = -1
+        pdp2 = -1
+        pdp3 = -1
+        pdp4 = -1
     end
 
-    ResetTempValues()
-
     function s744_function()
-		draw_string(50,1300,SRS_CL_SAVE.." : "..SRS_CL[0].." : "..efv1.." power "..power,"red")
 
 		if(SRS_CL_SAVE ~= SRS_CL[0]) then
 			ResetTempValues()
@@ -223,12 +220,10 @@ if(PLANE_ICAO == "B744" and PLANE_TAILNUMBER == "") then
         else
 		    switch_pos = string.format("%02d",00)           -- AUX
         end
-		draw_string(50,1250,switch_pos,"red")
 
         if B747DR_annun_brightness_ratio[109] > 0 then pump_dem_p = string.format("%0d",1) else pump_dem_p = string.format("%0d",0) end
 
         temp_value = tonumber(switch_pos..pump_dem_p..power,2)
-		draw_string(50,1200,switch_pos..pump_dem_p..power.." : "..temp_value,"red")
 
         if pdp1 ~= temp_value then SHAREDINT[12] = temp_value pdp1 = temp_value end
         -- ENDS DEMAND PUMP 1 Section
@@ -286,6 +281,10 @@ if(PLANE_ICAO == "B744" and PLANE_TAILNUMBER == "") then
 
         if pdp4 ~= temp_value then SHAREDINT[15] = temp_value pdp4 = temp_value end
         -- ENDS DEMAND PUMP 4 Section
+
+		draw_string(50,1260,SRS_CL_SAVE.." : "..SRS_CL[0].." : "..efv1.." power "..power,"red")
+		draw_string(50,1240,switch_pos,"red")
+		draw_string(50,1220,switch_pos..pump_dem_p..power.." : "..temp_value,"red")
     end
 
     do_every_draw("s744_function()")
